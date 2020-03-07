@@ -32,3 +32,7 @@ def search(request):
         'search_query': search_query,
         'search_results': search_results,
     })
+
+
+if __name__ == "__main__":
+    import search

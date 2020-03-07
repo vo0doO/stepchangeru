@@ -27,10 +27,29 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}
+    
+    {% endblock %}">
+
         {% wagtailuserbar %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">StepChange</a>
+
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand" href="/">StepChange</a>
+        
+           
+            <div class="d-inline" id="navbarText">
+              {% if request.user.is_authenticated %}
+                <span class="navbar-text mr-sm-2">
+                  Привет: {{ request.user.username }}
+                  <a href="{% url 'account_logout' %}" class="nav-link d-inline my-2 my-sm-0">Выйти</a>
+                </span>
+              {% else %}
+                <span class="navbar-text">
+                  <a href="{% url 'account_login' %}" class="nav-link d-inline">Войти</a>
+                </span>
+              {% endif %}
+              </div>
+          </nav>
             <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -55,7 +74,7 @@
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
               </form>
             </div>-->
-          </nav>
+
         {% block content %}{% endblock %}
 
         {# Global javascript #}
