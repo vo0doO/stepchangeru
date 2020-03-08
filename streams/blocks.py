@@ -1,6 +1,8 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
+import blog
+
 
 class TitleAndTextBlock(blocks.StructBlock):
 
@@ -72,11 +74,32 @@ class CTABlock(blocks.StructBlock):
         label = "Call to action"
 
 
+class LinkStructValue(blocks.StructValue):
+    """Adding logic for our url"""
+    def url(self):
+        button_page = self.get('button_page')
+        button_url = self.get('button_url')
+        if button_page:
+            return button_page.url
+        elif button_url:
+            return button_url
+        return None
+
+    # def latest_posts(self):
+    #     return blog.models.BlogDetailPage.objects.live()[:3]
+
+
 class ButtonBlock(blocks.StructBlock):
-    "button_page", blocks.PageChooserBlock(required=False)
-    "button_url", blocks.URLBlock(required=False, help_text='')
+    button_page = blocks.PageChooserBlock(required=False, help_text='First link')
+    button_url = blocks.URLBlock(required=False, help_text='Last link')
+
+    # def get_context(self, request, *args, **kwargs):
+    #     context = super().get_context(request, *args, **kwargs)
+    #     context['latest_posts'] = blog.models.BlogDetailPage.objects.live().public()[:3]
+    #     return context
 
     class Meta:
         template = "streams/button_block.html"
         icon = "placeholder"
-        label = "Button Block"
+        label = "Single button"
+        value_class = LinkStructValue

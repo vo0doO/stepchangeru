@@ -36,7 +36,6 @@ class BlogDetailPage(Page):
             ("simple_richtext", blocks.SimpleRichtextBlock()),
             ("cards", blocks.CardBlock()),
             ("cta", blocks.CTABlock()),
-
         ],
         null=True,
         blank=True,
