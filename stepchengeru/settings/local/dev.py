@@ -1,4 +1,3 @@
-from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -7,13 +6,10 @@ DEBUG = True
 SECRET_KEY = 'kq)@g8qy^x=$5b&-h&%ns5i=dfi@001m#dougkfclm2-gukyhk'
 
 # SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ['*'] 
+ALLOWED_HOSTS = ['*']
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+INSTALLED_APPS += ["wagtail.contrib.styleguide"]
 
-INSTALLED_APPS += ["debug_toolbar"]
-
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 INTERNAL_IPS = ["127.0.0.1"]
 

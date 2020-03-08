@@ -70,3 +70,13 @@ class CTABlock(blocks.StructBlock):
         template = "streams/cta_block.html"
         icon = "placeholder"
         label = "Call to action"
+
+
+class ButtonBlock(blocks.StructBlock):
+    "button_page", blocks.PageChooserBlock(required=False)
+    "button_url", blocks.URLBlock(required=False, help_text='')
+
+    class Meta:
+        template = "streams/button_block.html"
+        icon = "placeholder"
+        label = "Button Block"
