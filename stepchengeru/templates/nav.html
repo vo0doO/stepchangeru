@@ -1,0 +1,325 @@
+{% load static %}
+
+<header id="headerTopNav" class="headerContainer ">
+
+
+
+    <!-- Meta -->
+
+
+    <link href="{% static 'css/topNav.css' %}" type="text/css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+
+
+    <!-- Top Header -->
+
+
+    <div class="menuBarContainer" id="menuBarContainer">
+
+        <div>
+            <a href="/"><img alt="stepchange logo" class="topLogo" src="{% static "img/logo_color.png" %}"></a>
+        </div>
+
+        <div class="navIconContainer">
+            <div class="navIconMenuButton" id="searchBtn">
+                <img alt="button to open search bar" role="button" src="{% static "img/line-search.png" %}" class="navIcon">
+                <p class="navIconText">Search</p>
+            </div>
+            <div class="navIconMenuButton" id="lineSearchBtn">
+                <img alt="button to close search bar" role="button" src="{% static "img/line_cross.png" %}" class="navIcon">
+                <p class="navIconText">Close</p>
+            </div>
+            <div class="navIconMenuButton" id="lineAccntBtn">
+                <a href="/return"><img alt="link to log back in to your account" src="{% static "img/line-account-charcoal.png" %}" class="navIcon"></a>
+                <p class="navIconText">Log in</p>
+            </div>
+            <div class="navIconMenuButton" id="hamburger">
+                <img alt="button to open menu" role="button" src="{% static "img/line-menu.png" %}" class="navIcon">
+                <p class="navIconText">Menu</p>
+            </div>
+            <div class="navIconMenuButton" id="cross">
+                <img alt="button to close menu" role="button" src="{% static "img/line-cross.png" %}" class="navIcon">
+                <p class="navIconText">Close</p>
+            </div>
+        </div>
+
+        <!--
+        <div class="navIconContainer">
+            <img alt="button to open search bar" role="button" src="/Portals/0/TopNav/Img/line-search.png" class="navIcon" id="searchBtn">
+            <img alt="button to close search bar" role="button" src="/Portals/0/TopNav/Img/line-cross.png" class="navIcon" id="lineSearchBtn">
+            <a href="https://www.stepchange.org/return"><img alt="link to log back in to your account" src="/Portals/0/TopNav/Img/line-account-charcoal.png" class="navIcon" id="lineAccntBtn"></a>
+            <img alt="button to open menu" role="button" src="/Portals/0/TopNav/Img/line-menu.png" class="navIcon" id="hamburger">
+            <img alt="button to close menu" role="button" src="/Portals/0/TopNav/Img/line-cross.png" class="navIcon" id="cross">
+        </div>
+        -->
+    </div>
+
+
+
+    <!-- Top Search -->
+
+
+    <div role="search" id="mainSearchContainer" class="mainSearchContainer">
+        <button class="searchSubmitDesktop" type="button" onclick="searchRunDesktop(this.form); return false;"><img alt="spy glass icon" src="{% static "img/line-search.png" %}" class="navIcon"></button>
+    </div>
+
+
+    <script> function searchRun(formName) {
+        var query = document.getElementById('searchInputMobile').value;
+        if (query == "") {
+            alert("Please enter a search term");
+        } else {
+            window.location.href = 'https://127.0.0.1:8000/search?search=' + query;
+        }
+    }
+    </script>
+
+
+
+    <!-- Top Navigation -->
+
+
+    <nav role="navigation" id="parentMenu" class="parentMenu">
+
+
+
+        <div id="menuCTAs" class="menuSection" aria-hidden="false">
+
+            <div role="search" class="desktopSearch">
+                <input type="text" placeholder="Search..." class="searchBoxDesktop" id="searchInputDesktop" onkeypress="if(event.which===13||event.charCode===13||event.keyCode===13) { searchRunDesktop(this.form); return false; }">
+                <button class="searchSubmitDesktop" type="button" onclick="searchRunDesktop(this.form); return false;"><img alt="spy glass icon" src="{% static "img/line-search.png" %}" class="navIcon"></button>
+            </div>
+
+            <script> function searchRunDesktop(formName) {
+                var query = document.getElementById('searchInputDesktop').value;
+                if (query == "") {
+                    alert("Please enter a search term");
+                } else {
+                    window.location.href = 'https://www.stepchange.org/search-results?search=' + query;
+                }
+            }
+            </script>
+
+            <a role="button" id="startButton" href="/Start.aspx" class="btn btnPrimary">Get debt help now</a>
+            <a role="button" id="loginButton" href="/Return.aspx"><img title="Return to debt advice" alt="return to debt advice icon" class="loginIcons" src="{%  static "img/line-account-purple.png" %}">Log in</a>
+            <a role="button" href="https://onlinedmp.stepchange.org/Home/Login"><img title="OnlineDMP" alt="online D M P icon" class="loginIcons" src="{% static "img/line-featured-link.png" %}">OnlineDMP</a>
+
+
+        </div>
+
+        <!-- Menus -->
+
+        <div class="menuSectionParentItem removePaddingTop">
+            <ul role="menubar" aria-hidden="false">
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn1" class="menuHeader"><a href="#">How we help</a><img alt="menu drop down icon" id="chevron1" src="{% static "img/line-chevron-down.png" %}" class="chevron"></span>
+
+                    <div id="toggleSctn1" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="https://www.stepchange.org/how-we-help.aspx">How we help home &gt;</a>
+                        </div>
+
+                        <ul class="childMenuSection moveLeftDesktop"><p class="childMenuSectionTitle">Our services and solutions</p>
+                            <li><a id="topNav-Debtadvice" href="/how-we-help/debt-advice.aspx" title="Free debt advice from our experts">Debt advice</a></li>
+                            <li><a id="topNav-PDebt" href="/persistent-debt.aspx" title="Received a persistent debt letter?">Persistent debt</a></li>
+                            <li><a id="topNav-Dmp" href="/how-we-help/debt-management-plan.aspx" title="Manage your debts and pay them at an affordable rate with a Debt Management Plan (DMP)">Debt management plan (DMP)</a></li>
+                            <li><a id="topNav-Iva" href="/how-we-help/individual-voluntary-arrangement.aspx" title="Pay a monthly amount you can afford with an Individual Voluntary Arrangement (IVA)">Individual voluntary arrangement (IVA)</a></li>
+                            <li><a id="topNav-Bankruptcy" href="/how-we-help/bankruptcy.aspx" title="We'll help you determine if bankruptcy is right for you">Bankruptcy advice</a></li>
+                            <li><a id="topNav-DRO" href="/how-we-help/debt-relief-order.aspx" title="Have your debts written off with a Debt Relief Order (DRO)">Debt relief order (DRO)</a></li>
+                            <li><a id="topNav-Equityrelease" href="/how-we-help/equity-release.aspx" title="Equity release advice from StepChange Financial Solutions">Equity release</a></li>
+                            <li><a id="topNav-MOR" href="/how-we-help/mortgages.aspx" title="Find out if you can get a better mortgage">Mortgage advice</a></li>
+                            <li><a id="topNav-Das" href="/how-we-help/debt-arrangement-scheme.aspx" title="Debt arrangement scheme advice from StepChange Debt Charity">Debt arrangement scheme (DAS)</a></li>
+                            <li><a id="topNav-Trustdeed" href="/how-we-help/trust-deed-scotland.aspx" title="Scotland trust deed advice from StepChange Debt Charity">Protected trust deed</a></li>
+                            <li><a id="topNav-Sequestration" href="/how-we-help/sequestration-scotland.aspx" title="Sequestration Scottish bankruptcy from StepChange Debt Charity">Sequestration (Scottish bankruptcy)</a></li>
+                            <li><a id="topNav-Map" href="/how-we-help/minimal-asset-process-bankruptcy.aspx" title="Minimal asset process (MAP) advice from StepChange Debt Charity Scotland">Minimal asset process (MAP)</a></li>
+                        </ul>
+
+                        <div class="moveRightDesktop">
+                            <ul class="childMenuSection"><p class="childMenuSectionTitle">We also provide</p>
+                                <li><a id="topNav-DR" href="/Start.aspx" title="Use our online debt help tool and we'll help you find the best solution">Online debt advice</a></li>
+                                <li><a id="topNav-Benefitscheck" href="/how-we-help/benefits-calculator.aspx" title="Find out which benefits you can claim">Online benefits calculator</a></li>
+                                <li><a id="topNav-repayment-calculator" href="/debt-info/credit-card-repayment-calculator.aspx" title="Are you in control of your repayments?">Card repayment calculator</a></li>
+                                <li><a id="topNav-Moneyadvice" href="/how-we-help/money-advice.aspx" title="Make the most of your money with MoneyAware">Money advice</a></li>
+                                <li><a id="topNav-Debtandmentalhealth" href="/partner-spotlight/debt-and-mental-health.aspx" title="Take practical steps to face your debt and stress">How to cope with debt &amp; stress</a></li>
+                                <li><a id="topNav-Sevendays" href="/7-days-7-ways.aspx" title="Take control of your debts in 7 Days">7 Days 7 Ways email programme</a></li>
+                            </ul>
+
+                            <div class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle">60-second debt test</p>
+                                <div class="menuToolTeaser"><img alt="clock icon" class="teaserToolIcon" src="{% static "img/line-future-changes.png" %}">
+                                    <p>Check to see how many danger signs of debt apply to you</p></div>
+                                <a href="/debt-test.aspx" class="btn btnTertiary removeMarginBottom addMarginTop">Take the test now</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn2" class="menuHeader"><a href="#">Debt information</a><img alt="menu drop down icon" id="chevron2" src="{% static "img/line-chevron-down.png" %}" class="chevron"></span>
+
+                    <div id="toggleSctn2" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/debt-info.aspx">Debt information home &gt;</a>
+                        </div>
+
+                        <ul class="childMenuSection moveLeftDesktop"><p class="childMenuSectionTitle">Got a debt question?</p>
+                            <li><a id="topNav-Debtprocess" href="/debt-info/debt-collection.aspx" title="Understanding the debt collection process">Debt collection process</a></li>
+                            <li><a id="topNav-Debtsolutions" href="/debt-info/debt-solutions.aspx" title="Debt solutions available in the UK">Types of debt solutions</a></li>
+                            <li><a id="topNav-Dealingwithdebt" href="/debt-info/dealing-with-debt-problems.aspx" title="Your rights and how to deal with debt problems">Dealing with debt problems</a></li>
+                            <li><a id="topNav-Typesofdebt" href="/debt-info/types-of-debt.aspx" title="Understanding debt and borrowing">Understanding debt &amp; borrowing</a></li>
+                            <li><a id="topNav-Financialsituation" href="/debt-info/your-financial-situation.aspx" title="How to deal with significant changes in your situation">Budgeting, money &amp; life changes</a></li>
+                        </ul>
+
+                        <div class="moveRightDesktop">
+                            <ul class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle">Popular searches</p>
+                                <li><a id="topNav-Debtconsolidation" href="/debt-info/debt-consolidation.aspx" title="Considerations when consolidating debt">Debt consolidation</a></li>
+                                <li><a id="topNav-creditcard" href="/debt-info/credit-card-debt.aspx" title="Get help with credit card debt">Credit card debt</a></li>
+                                <li><a id="topNav-PersDebt" href="/persistent-debt.aspx" title="Help with persistent debt">Credit card persistent debt</a></li>
+                                <li><a id="topNav-Debtmanagementcompanies" href="/debt-info/pay-off-or-reduce-debt/debt-management-companies.aspx" title="How a debt management company differs from a charity">Debt management companies</a></li>
+                                <li><a id="topNav-Ccj" href="/debt-info/ccj.aspx" title="County Court Judgments and what to do next">CCJs &amp; County Court process</a></li>
+                                <li><a id="topNav-Bailiffhelp" href="/debt-info/debt-collection/bailiff-help-and-advice.aspx" title="Bailiff help and advice - what can they do?">Bailiff help and advice</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </li>
+
+
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn5" class="menuHeader"><a href="#">About us</a><img alt="menu drop down icon" id="chevron5" src="{% static "img/line-chevron-down.png" %}" class="chevron"></span>
+
+                    <div id="toggleSctn5" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/about-us.aspx">About us home &gt;</a>
+                        </div>
+
+                        <ul class="childMenuSection childMenuTopShadow moveLeftDesktop"><p class="childMenuSectionTitle">More about us</p>
+                            <li><a id="topNav-Whatwedo" href="/about-us/what-we-do.aspx" title="How we help people in debt">What we do</a></li>
+                            <li><a id="topNav-Makingadifference" href="/about-us/making-a-difference.aspx" title="People we’ve helped">How we make a difference</a></li>
+                            <li><a id="topNav-History" href="/about-us/our-history.aspx" title="From CCCS to StepChange">Our history</a></li>
+                            <li><a id="A2" href="/about-us/who-we-work-with.aspx" title="Our partners">Who we work with</a></li>
+                            <li><a id="topNav-Vision" href="/about-us/vision-and-strategy.aspx" title="Creating a society free from problem debt">Vision &amp; strategy</a></li>
+                        </ul>
+
+                        <div class="moveRightDesktop">
+                            <ul class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle">Working together</p>
+                                <li><a id="topNav-Partner" href="/about-us/partner-with-us.aspx" title="Partner with us">Partner with us</a></li>
+                                <li><a href="/about-us/jobs-at-stepchange.aspx" title="Check out our latest vacancies"><strong>Jobs and careers</strong></a></li>
+                                <li><a id="topNav-Campaigning" href="/about-us/campaigning-for-you.aspx" title="Campaigning for change">Campaigning for you</a></li>
+                                <li><a id="topNav-Governance" href="/about-us/governance.aspx" title="Regulatory information about our charity">Governance</a></li>
+                                <li><a id="topNav-Mediacentre" href="/media-centre/press-releases.aspx" title="Latest news, facts and statistics about UK problem debt">Press releases</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn4" class="menuHeader"><a href="#">Policy &amp; campaigns</a><img alt="menu drop down icon" id="chevron4" src="{% static "img/line-chevron-down.png" %}" class="chevron"></span>
+
+                    <div id="toggleSctn4" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/policy-and-research.aspx">Policy &amp; campaigns home &gt;</a>
+                        </div>
+
+                        <ul class="childMenuSection childMenuTopShadow moveLeftDesktop"><p class="childMenuSectionTitle">Debt in the UK</p>
+                            <li><a href="/policy-and-research/debt-research.aspx" title="Our research into the causes and consequences of problem debt">Our latest debt research</a></li>
+                            <li><a href="/policy-and-research/debt-policy.aspx" title="How we campaign for change to overcome problem debt">Our key policy campaigns</a></li>
+                            <li><a href="/policy-and-research/consultation-responses.aspx" title="Using our insights to inform personal debt policy consultations">Consultation responses</a></li>
+                            <li><a href="/policy-and-research/personal-debt-statistics-in-the-uk.aspx" title="What we know about UK personal debt trends">UK debt statistics</a></li>
+                        </ul>
+
+                        <div class="moveRightDesktop">
+                            <ul class="childMenuSection"><p class="childMenuSectionTitle">StepChange in Parliament</p>
+                                <p class="linkHeaderText">We work with parliamentarians on briefings, events &amp; debt trends</p>
+                                <li><a href="/policy-and-research/parliament.aspx" title="How we work with parliament to help those in debt">Our work in Parliament &gt;&gt;</a></li>
+                                <p class="linkHeaderText">The latest debt trends &amp; analysis from our industry experts</p>
+                                <li><a href="https://medium.com/@stepchange" target="_blank" title="Insight and comment on the latest UK personal debt trends">Read our medium.com blog &gt;&gt;</a></li>
+                            </ul>
+
+                            <div class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle">Get involved</p>
+                                <div class="socialLinks">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn3" class="menuHeader"><a href="#">Clients</a><img alt="menu drop down icon" id="chevron3" src="{% static "img/line-chevron-down.png" %}" class="chevron"></span>
+
+                    <div id="toggleSctn3" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/clients.aspx">Clients home &gt;</a>
+                        </div>
+
+                        <ul class="childMenuSection childMenuTopShadow moveLeftDesktop"><p class="childMenuSectionTitle">Client support</p>
+                            <li><a id="topNav-Dmpclients" href="/clients/dmp-clients.aspx" title="Support and information for our DMP clients">DMP clients</a></li>
+                            <li><a id="topNav-Bankruptcyclients" href="/clients/bankruptcy-clients.aspx" title="Guidance for clients recommended bankruptcy">Bankruptcy clients</a></li>
+                            <li><a id="topNav-Ivaclients" href="/clients/iva-clients.aspx" title="Information to help make your IVA a success">IVA clients</a></li>
+                            <li><a id="topNav-Droclients" href="/clients/dro-clients.aspx" title="Resources for clients going through a DRO">DRO clients</a></li>
+                            <li><a id="topNav-Tppclients" href="/clients/tpp-clients.aspx" title="Support for clients making token payments on their debts">TPP clients</a></li>
+                            <li><a id="topNav-Dasclients" href="/clients/das-clients.aspx" title="Help for clients on a DPP through the Debt Arrangement Scheme">DPP clients</a></li>
+                        </ul>
+
+                        <div class="childMenuSection childMenuBottomNoLine moveRightDesktop"><p class="childMenuSectionTitle">OnlineDMP login</p>
+                            <div class="menuToolTeaser"><img alt="online D M P login icon" class="teaserToolIcon" src="{% static "img/line-lock-orange.png" %}">
+                                <p>Log back in to OnlineDMP</p></div>
+                            <a href="https://onlinedmp.stepchange.org/Home/Login" class="btn btnTertiary removeMarginBottom addMarginTop">Sign in</a>
+                        </div>
+
+                    </div>
+
+                </li>
+
+                <li class="menuItem noBorder">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn6" class="menuHeader"><a href="#">Contact us</a><img alt="menu drop down icon" id="chevron6" src="{% static "img/line-chevron-down.png" %}" class="chevron"></span>
+
+                    <div id="toggleSctn6" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/contact-us.aspx">Contact us home &gt;</a>
+                        </div>
+
+                        <div class="moveLeftDesktop">
+                            <ul class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle">Other ways to get in touch</p>
+                                <li><a id="topNav-Contactclientsupport" href="/contact-us.aspx#support" title="Answers to your debt solution questions">Client support teams</a></li>
+                                <li><a href="/contact-us.aspx#helpline" title="Get debt help on the phone">Call our helpline</a></li>
+                                <li><a id="topNav-Onlinedmp" href="https://onlinedmp.stepchange.org/Home/Login" target="_blank" onclick="dataLayer.push({'event':'GAevent', 'eventCategory':'Link', 'eventAction':'Click', 'eventLabel':'Top nav - Contact - OnlineDMP'});" title="Make updates to your DMP">Use OnlineDMP</a></li>
+                                <li><a id="topNav-Emailus" href="/contact-us/send-us-an-email.aspx" title="Email us with your questions or comments">Send us an email</a></li>
+                                <li><a id="topNav-Complaints" href="/Legal/complaints-process.aspx" title="Our complaints process">Unhappy with our service?</a></li>
+                                <li><a href="/media-centre.aspx" title="Contact our media team">Press enquiries</a></li>
+
+
+                            </ul>
+
+
+                        </div>
+
+                        <div class="moveRightDesktop">
+                            <div class="childMenuSection childMenuTopShadow"><p class="childMenuSectionTitle">Get online debt advice now</p>
+                                <div class="menuToolTeaser"><img alt="start debt advice icon" class="teaserToolIcon" src="{% static "img/line-get-advice.png" %}">
+                                    <p>Get free online debt advice in less than 30 minutes from the UK's leading debt charity</p></div>
+                                <a href="/Start.aspx" class="btn btnPrimary removeMarginBottom addMarginTop">Start debt advice</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<script src="{% static 'js/topNav.js' %}"></script>

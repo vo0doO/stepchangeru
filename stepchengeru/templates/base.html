@@ -20,7 +20,7 @@
     {# Global stylesheets #}
     <script src="https://kit.fontawesome.com/53e0b465a8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/stepchengeru.css' %}">
-    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+{#    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">#}
 
 
     {% block extra_css %}
@@ -33,30 +33,10 @@
     {% endblock %}">
 
 {% wagtailuserbar %}
+<nav class="navbar-light">
+{% include "nav.html" %}
+</nar>
 
-<nav class="navbar navbar-dark bg-primary">
-
-    <div class="">
-        <a class="navbar-brand" href="/">StepChange</a>
-        <a class="navbar-text" href="/">Home <span class="sr-only">(current)</span></a>
-        <a class="navbar-text" href="/blog/">Blog</a>
-        <a class="navbar-text" href="/about/">About</a>
-    </div>
-
-
-    <div class="d-inline" id="navbarText">
-        {% if request.user.is_authenticated %}
-            <span class="navbar-text mr-sm-2">
-                  Привет: {{ request.user.username }}
-                  <a href="{% url 'account_logout' %}" class="nav-link d-inline my-2 my-sm-0">Выйти</a>
-                </span>
-        {% else %}
-            <span class="navbar-text">
-                  <a href="{% url 'account_login' %}" class="nav-link d-inline">Войти</a>
-                </span>
-        {% endif %}
-    </div>
-</nav>
 
 {% block content %}{% endblock %}
 
