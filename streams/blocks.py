@@ -128,7 +128,7 @@ class BannerBlock(blocks.StructBlock):
         content = StreamField([("cta", CTABlock(reversed=False)),], null=True, blank=True,),
     )
     class Meta:
-        template = "streams/button_block.html"
+        template = "streams/banner_block.html"
         icon = "placeholder"
         label = "Banner"
         value_class = ButtonLinkStructValue

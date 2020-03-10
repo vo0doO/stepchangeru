@@ -40,7 +40,9 @@ class HomePage(RoutablePageMixin, Page):
 
     banner_image = models.ForeignKey(Image,on_delete=models.SET_NULL,null=True,blank=False,related_name="+")
 
-    banner_cta = models.ForeignKey("wagtailcore.Page",models.SET_NULL,null=True,blank=False,related_name="+")
+    banner_button_page = models.ForeignKey("wagtailcore.Page",models.SET_NULL,null=True,blank=False,related_name="+")
+
+    banner_button_url = models.URLField(default="/login/", null=True, blank=False,related_name="+")
 
     content = StreamField(
         [
@@ -55,7 +57,8 @@ class HomePage(RoutablePageMixin, Page):
             FieldPanel("banner_title"),
             FieldPanel("banner_subtitle"),
             ImageChooserPanel("banner_image"),
-            PageChooserPanel("banner_cta"),
+            PageChooserPanel("banner_button_page"),
+            FieldPanel("banner_button_url"),
         ], heading="Banner options"),
         MultiFieldPanel([
             InlinePanel("carousel_images", max_num=5, min_num=1, label="Image"),
