@@ -121,8 +121,8 @@ class ButtonBlock(blocks.StructBlock):
 class BannerBlock(blocks.StructBlock):
     # TODO: изменить с фиелд на блок
     banner = blocks.StructBlock(
-        banner_title = models.CharField(max_length=100,blank=False,null=True),
-        banner_subtitle = RichTextField(features=["bold", "italic"],default=""),
+        banner_title = blocks.RichTextBlock(max_length=100, blank=False,null=True),
+        banner_subtitle = blocks.RichTextBlock(features=["bold", "italic"],default=""),
         banner_image = models.ForeignKey(Image,on_delete=models.SET_NULL,null=True,blank=False,related_name="+"),
         banner_cta = models.ForeignKey("wagtailcore.Page",models.SET_NULL,null=True,blank=False,related_name="+"),
         content = StreamField([("cta", CTABlock(reversed=False)),], null=True, blank=True,),

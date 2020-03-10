@@ -36,7 +36,7 @@ class HomePage(RoutablePageMixin, Page):
 
     banner_title = models.CharField(max_length=100,blank=False,null=True)
 
-    banner_subtitle = RichTextField(default="")
+    banner_subtitle = models.CharField(max_length=250, default="")
 
     banner_image = models.ForeignKey(Image,on_delete=models.SET_NULL,null=True,blank=False,related_name="+")
 
