@@ -36,13 +36,19 @@ class HomePage(RoutablePageMixin, Page):
 
     banner_title = models.CharField(max_length=100,blank=False,null=True)
 
-    banner_subtitle = RichTextField(features=["bold", "italic"],default="")
+    banner_subtitle = RichTextField(default="")
 
     banner_image = models.ForeignKey(Image,on_delete=models.SET_NULL,null=True,blank=False,related_name="+")
 
     banner_cta = models.ForeignKey("wagtailcore.Page",models.SET_NULL,null=True,blank=False,related_name="+")
 
-    content = StreamField([("cta", blocks.CTABlock()),], null=True, blank=True,)
+    content = StreamField(
+        [
+            ("cta", blocks.CTABlock()),
+            ("banner", blocks.BannerBlock()),
+            ("row", blocks.RowBlock()),
+        ],
+        null=True, blank=True,)
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
