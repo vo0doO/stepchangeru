@@ -9,6 +9,8 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from wagtail.core.fields import StreamField
 from streams import blocks
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
+from django.shortcuts import render
 
 
 class HomePageCarouselImages(Orderable):
@@ -27,48 +29,20 @@ class HomePageCarouselImages(Orderable):
         ImageChooserPanel("carousel_image")
     ]
 
-class HomePage(Page):
+class HomePage(RoutablePageMixin, Page):
     """Home page model."""
-
+    # TODO: Сделать этот банер стримовым блоком
     templates = "home/home_page.html"
 
-    # max_count = 1
+    banner_title = models.CharField(max_length=100,blank=False,null=True)
 
-    banner_title = models.CharField(
-        max_length=100,
-        blank=False,
-        null=True
-            )
+    banner_subtitle = RichTextField(features=["bold", "italic"],default="")
 
-    banner_subtitle = RichTextField(
-        features=["bold", "italic"],
-        default=""
-    )
+    banner_image = models.ForeignKey(Image,on_delete=models.SET_NULL,null=True,blank=False,related_name="+")
 
-    banner_image = models.ForeignKey(
-        Image,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=False,
-        related_name="+"
-    )
+    banner_cta = models.ForeignKey("wagtailcore.Page",models.SET_NULL,null=True,blank=False,related_name="+")
 
-    banner_cta = models.ForeignKey(
-        "wagtailcore.Page",
-        models.SET_NULL,
-        null=True,
-        blank=False,
-        related_name="+"
-    )
-
-    content = StreamField(
-        [
-            ("cta", blocks.CTABlock()),
-
-        ],
-        null=True,
-        blank=True,
-    )
+    content = StreamField([("cta", blocks.CTABlock()),], null=True, blank=True,)
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
@@ -83,7 +57,13 @@ class HomePage(Page):
         StreamFieldPanel("content"),
     ]
 
-    class Meta:
+    @route(r'^$')
+    def the_subscribe_page(self, request, *args, **kwargs):
+        context = self.get_context(self, request, *args, **kwargs)
+        context["test_context"] = "Its test context"
+        return render(request, "home/subscribe.html", context)
 
+
+    class Meta:
         verbose_name = "Home Page"
         verbose_name_plural = "Home Pages"

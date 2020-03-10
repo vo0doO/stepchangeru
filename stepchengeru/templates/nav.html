@@ -25,7 +25,7 @@
         <div class="navIconContainer">
             <div class="navIconMenuButton" id="searchBtn">
                 <img alt="button to open search bar" role="button" src="{% static "img/line-search.png" %}" class="navIcon">
-                <p class="navIconText">Search</p>
+                <p class="navIconText">Поиск</p>
             </div>
             <div class="navIconMenuButton" id="lineSearchBtn">
                 <img alt="button to close search bar" role="button" src="{% static "img/line_cross.png" %}" class="navIcon">
@@ -33,11 +33,11 @@
             </div>
             <div class="navIconMenuButton" id="lineAccntBtn">
                 <a href="/return"><img alt="link to log back in to your account" src="{% static "img/line-account-charcoal.png" %}" class="navIcon"></a>
-                <p class="navIconText">Log in</p>
+                <p class="navIconText">Вход</p>
             </div>
             <div class="navIconMenuButton" id="hamburger">
                 <img alt="button to open menu" role="button" src="{% static "img/line-menu.png" %}" class="navIcon">
-                <p class="navIconText">Menu</p>
+                <p class="navIconText">Меню</p>
             </div>
             <div class="navIconMenuButton" id="cross">
                 <img alt="button to close menu" role="button" src="{% static "img/line-cross.png" %}" class="navIcon">
@@ -49,7 +49,7 @@
         <div class="navIconContainer">
             <img alt="button to open search bar" role="button" src="/Portals/0/TopNav/Img/line-search.png" class="navIcon" id="searchBtn">
             <img alt="button to close search bar" role="button" src="/Portals/0/TopNav/Img/line-cross.png" class="navIcon" id="lineSearchBtn">
-            <a href="https://www.stepchange.org/return"><img alt="link to log back in to your account" src="/Portals/0/TopNav/Img/line-account-charcoal.png" class="navIcon" id="lineAccntBtn"></a>
+            <a href="{{ login.url }}"><img alt="link to log back in to your account" src="/Portals/0/TopNav/Img/line-account-charcoal.png" class="navIcon" id="lineAccntBtn"></a>
             <img alt="button to open menu" role="button" src="/Portals/0/TopNav/Img/line-menu.png" class="navIcon" id="hamburger">
             <img alt="button to close menu" role="button" src="/Portals/0/TopNav/Img/line-cross.png" class="navIcon" id="cross">
         </div>
@@ -88,7 +88,7 @@
         <div id="menuCTAs" class="menuSection" aria-hidden="false">
 
             <div role="search" class="desktopSearch">
-                <input type="text" placeholder="Search..." class="searchBoxDesktop" id="searchInputDesktop" onkeypress="if(event.which===13||event.charCode===13||event.keyCode===13) { searchRunDesktop(this.form); return false; }">
+                <input type="text" placeholder="Поиск..."searchBoxDesktop" id="searchInputDesktop" onkeypress="if(event.which===13||event.charCode===13||event.keyCode===13) { searchRunDesktop(this.form); return false; }">
                 <button class="searchSubmitDesktop" type="button" onclick="searchRunDesktop(this.form); return false;"><img alt="spy glass icon" src="{% static "img/line-search.png" %}" class="navIcon"></button>
             </div>
 
@@ -102,15 +102,224 @@
             }
             </script>
 
-            <a role="button" id="startButton" href="/Start.aspx" class="btn btnPrimary">Get debt help now</a>
-            <a role="button" id="loginButton" href="/Return.aspx"><img title="Return to debt advice" alt="return to debt advice icon" class="loginIcons" src="{%  static "img/line-account-purple.png" %}">Log in</a>
-            <a role="button" href="https://onlinedmp.stepchange.org/Home/Login"><img title="OnlineDMP" alt="online D M P icon" class="loginIcons" src="{% static "img/line-featured-link.png" %}">OnlineDMP</a>
+            <a role="button" id="startButton" href="{{ login.url }}" class="btn btnPrimary">Get debt help now</a>
+            <a role="button" id="loginButton" href="{{ login.url }}"><img title="Return to debt advice" alt="return to debt advice icon" class="loginIcons" src="{%  static "img/line-account-purple.png" %}">Вход</a>
+            <a role="button" href="{{ login.url }}"><img title="OnlineDMP" alt="online D M P icon" class="loginIcons" src="{% static "img/line-featured-link.png" %}">ОнлайнDMP</a>
 
 
         </div>
 
         <!-- Menus -->
+        <div class="menuSectionParentItem removePaddingTop">
+            <ul role="menubar" aria-hidden="false">
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn1" class="menuHeader"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Как мы помогаем</font></font></a><img alt="выпадающий значок меню" id="chevron1" src="/static/img/line-chevron-down.png" class="chevron"></span>
 
+                    <div id="toggleSctn1" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="https://www.stepchange.org/how-we-help.aspx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Как мы помогаем домой&gt;</font></font></a>
+                        </div>
+
+                        <ul class="childMenuSection moveLeftDesktop"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Наши услуги и решения</font></font></p>
+                            <li><a id="topNav-Debtadvice" href="/how-we-help/debt-advice.aspx" title="Free debt advice from our experts"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Долговой совет</font></font></a></li>
+                            <li><a id="topNav-PDebt" href="/persistent-debt.aspx" title="Received a persistent debt letter?"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Постоянный долг</font></font></a></li>
+                            <li><a id="topNav-Dmp" href="/how-we-help/debt-management-plan.aspx" title="Manage your debts and pay them at an affordable rate with a Debt Management Plan (DMP)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">План управления долгом (DMP)</font></font></a></li>
+                            <li><a id="topNav-Iva" href="/how-we-help/individual-voluntary-arrangement.aspx" title="Pay a monthly amount you can afford with an Individual Voluntary Arrangement (IVA)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Индивидуальное добровольное соглашение (IVA)</font></font></a></li>
+                            <li><a id="topNav-Bankruptcy" href="/how-we-help/bankruptcy.aspx" title="We'll help you determine if bankruptcy is right for you"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Совет по банкротству</font></font></a></li>
+                            <li><a id="topNav-DRO" href="/how-we-help/debt-relief-order.aspx" title="Have your debts written off with a Debt Relief Order (DRO)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Распоряжение о списании долгов (УЦИ)</font></font></a></li>
+                            <li><a id="topNav-Equityrelease" href="/how-we-help/equity-release.aspx" title="Equity release advice from StepChange Financial Solutions">Equity release</a></li>
+                            <li><a id="topNav-MOR" href="/how-we-help/mortgages.aspx" title="Find out if you can get a better mortgage">Mortgage advice</a></li>
+                            <li><a id="topNav-Das" href="/how-we-help/debt-arrangement-scheme.aspx" title="Debt arrangement scheme advice from StepChange Debt Charity">Debt arrangement scheme (DAS)</a></li>
+                            <li><a id="topNav-Trustdeed" href="/how-we-help/trust-deed-scotland.aspx" title="Scotland trust deed advice from StepChange Debt Charity">Protected trust deed</a></li>
+                            <li><a id="topNav-Sequestration" href="/how-we-help/sequestration-scotland.aspx" title="Sequestration Scottish bankruptcy from StepChange Debt Charity">Sequestration (Scottish bankruptcy)</a></li>
+                            <li><a id="topNav-Map" href="/how-we-help/minimal-asset-process-bankruptcy.aspx" title="Minimal asset process (MAP) advice from StepChange Debt Charity Scotland">Minimal asset process (MAP)</a></li>
+                        </ul>
+
+                        <div class="moveRightDesktop">
+                            <ul class="childMenuSection"><p class="childMenuSectionTitle">We also provide</p>
+                                <li><a id="topNav-DR" href="/Start.aspx" title="Use our online debt help tool and we'll help you find the best solution">Online debt advice</a></li>
+                                <li><a id="topNav-Benefitscheck" href="/how-we-help/benefits-calculator.aspx" title="Find out which benefits you can claim">Online benefits calculator</a></li>
+                                <li><a id="topNav-repayment-calculator" href="/debt-info/credit-card-repayment-calculator.aspx" title="Are you in control of your repayments?">Card repayment calculator</a></li>
+                                <li><a id="topNav-Moneyadvice" href="/how-we-help/money-advice.aspx" title="Make the most of your money with MoneyAware">Money advice</a></li>
+                                <li><a id="topNav-Debtandmentalhealth" href="/partner-spotlight/debt-and-mental-health.aspx" title="Take practical steps to face your debt and stress">How to cope with debt &amp; stress</a></li>
+                                <li><a id="topNav-Sevendays" href="/7-days-7-ways.aspx" title="Take control of your debts in 7 Days">7 Days 7 Ways email programme</a></li>
+                            </ul>
+
+                            <div class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle">60-second debt test</p>
+                                <div class="menuToolTeaser"><img alt="clock icon" class="teaserToolIcon" src="/static/img/line-future-changes.png">
+                                    <p>Check to see how many danger signs of debt apply to you</p></div>
+                                <a href="/debt-test.aspx" class="btn btnTertiary removeMarginBottom addMarginTop">Take the test now</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn2" class="menuHeader"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Информация о долге</font></font></a><img alt="menu drop down icon" id="chevron2" src="/static/img/line-chevron-down.png" class="chevron"></span>
+
+                    <div id="toggleSctn2" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/debt-info.aspx">Debt information home &gt;</a>
+                        </div>
+
+                        <ul class="childMenuSection moveLeftDesktop"><p class="childMenuSectionTitle">Got a debt question?</p>
+                            <li><a id="topNav-Debtprocess" href="/debt-info/debt-collection.aspx" title="Понимание процесса взыскания задолженности">Debt collection process</a></li>
+                            <li><a id="topNav-Debtsolutions" href="/debt-info/debt-solutions.aspx" title="Долговые решения доступны в Великобритании">Types of debt solutions</a></li>
+                            <li><a id="topNav-Dealingwithdebt" href="/debt-info/dealing-with-debt-problems.aspx" title="Ваши права и как справляться с долговыми проблемами">Dealing with debt problems</a></li>
+                            <li><a id="topNav-Typesofdebt" href="/debt-info/types-of-debt.aspx" title="Понимание долга и займов">Understanding debt &amp; borrowing</a></li>
+                            <li><a id="topNav-Financialsituation" href="/debt-info/your-financial-situation.aspx" title="Как справиться со значительными изменениями в вашей ситуации">Budgeting, money &amp; life changes</a></li>
+                        </ul>
+
+                        <div class="moveRightDesktop">
+                            <ul class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle">Popular searches</p>
+                                <li><a id="topNav-Debtconsolidation" href="/debt-info/debt-consolidation.aspx" title="Соображения при консолидации долга">Debt consolidation</a></li>
+                                <li><a id="topNav-creditcard" href="/debt-info/credit-card-debt.aspx" title="Получить помощь с задолженностью по кредитной карте">Credit card debt</a></li>
+                                <li><a id="topNav-PersDebt" href="/persistent-debt.aspx" title="Помощь с постоянным долгом">Credit card persistent debt</a></li>
+                                <li><a id="topNav-Debtmanagementcompanies" href="/debt-info/pay-off-or-reduce-debt/debt-management-companies.aspx" title="Чем компания по управлению долгом отличается от благотворительности">Debt management companies</a></li>
+                                <li><a id="topNav-Ccj" href="/debt-info/ccj.aspx" title="Решения окружного суда и что делать дальше"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CCJs и окружной суд</font></font></a></li>
+                                <li><a id="topNav-Bailiffhelp" href="/debt-info/debt-collection/bailiff-help-and-advice.aspx" title="Помощь и совет судебных приставов - что они могут сделать?"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Помощь и совет судебных приставов</font></font></a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </li>
+
+
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn5" class="menuHeader"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">О нас</font></font></a><img alt="выпадающий значок меню" id="chevron5" src="/static/img/line-chevron-down.png" class="chevron"></span>
+
+                    <div id="toggleSctn5" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/about-us.aspx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">О нас главная&gt;</font></font></a>
+                        </div>
+
+                        <ul class="childMenuSection childMenuTopShadow moveLeftDesktop"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подробнее о нас</font></font></p>
+                            <li><a id="topNav-Whatwedo" href="/about-us/what-we-do.aspx" title="Как мы помогаем людям в долгах"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Что мы делаем</font></font></a></li>
+                            <li><a id="topNav-Makingadifference" href="/about-us/making-a-difference.aspx" title="Люди, которым мы помогли"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Как мы изменим</font></font></a></li>
+                            <li><a id="topNav-History" href="/about-us/our-history.aspx" title="От CCCS к StepChange"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Наша история</font></font></a></li>
+                            <li><a id="A2" href="/about-us/who-we-work-with.aspx" title="Наши партнеры"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">С кем мы работаем</font></font></a></li>
+                            <li><a id="topNav-Vision" href="/about-us/vision-and-strategy.aspx" title="Создание общества без проблемных долгов"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Видение и стратегия</font></font></a></li>
+                        </ul>
+
+                        <div class="moveRightDesktop">
+                            <ul class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Работая вместе</font></font></p>
+                                <li><a id="topNav-Partner" href="/about-us/partner-with-us.aspx" title="Партнер с нами"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Партнер с нами</font></font></a></li>
+                                <li><a href="/about-us/jobs-at-stepchange.aspx" title="Проверьте наши последние вакансии"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Работа и карьера</font></font></strong></a></li>
+                                <li><a id="topNav-Campaigning" href="/about-us/campaigning-for-you.aspx" title="Кампания за перемены"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Кампания для вас</font></font></a></li>
+                                <li><a id="topNav-Governance" href="/about-us/governance.aspx" title="Нормативная информация о нашей благотворительности"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">управление</font></font></a></li>
+                                <li><a id="topNav-Mediacentre" href="/media-centre/press-releases.aspx" title="Последние новости, факты и статистика о проблемной задолженности Великобритании"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">пресс-релизы</font></font></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn4" class="menuHeader"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Политика и кампании</font></font></a><img alt="выпадающий значок меню" id="chevron4" src="/static/img/line-chevron-down.png" class="chevron"></span>
+
+                    <div id="toggleSctn4" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/policy-and-research.aspx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Политика и кампании домой&gt;</font></font></a>
+                        </div>
+
+                        <ul class="childMenuSection childMenuTopShadow moveLeftDesktop"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Долг в Великобритании</font></font></p>
+                            <li><a href="/policy-and-research/debt-research.aspx" title="Наше исследование причин и последствий проблемных долгов"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Наше последнее исследование долгов</font></font></a></li>
+                            <li><a href="/policy-and-research/debt-policy.aspx" title="Как мы проводим кампанию за перемены, чтобы преодолеть проблему задолженности"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Наши ключевые политические кампании</font></font></a></li>
+                            <li><a href="/policy-and-research/consultation-responses.aspx" title="Использование наших идей для информирования о консультациях по вопросам личной задолженности"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Консультационные ответы</font></font></a></li>
+                            <li><a href="/policy-and-research/personal-debt-statistics-in-the-uk.aspx" title="Что мы знаем о тенденциях личного долга Великобритании"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Статистика долгов Великобритании</font></font></a></li>
+                        </ul>
+
+                        <div class="moveRightDesktop">
+                            <ul class="childMenuSection"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Изменение шага в парламенте</font></font></p>
+                                <p class="linkHeaderText"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Мы работаем с парламентариями на брифингах, событиях и долговых тенденциях</font></font></p>
+                                <li><a href="/policy-and-research/parliament.aspx" title="Как мы работаем с парламентом, чтобы помочь тем, кто в долгах"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Наша работа в парламенте &gt;&gt;</font></font></a></li>
+                                <p class="linkHeaderText"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Последние тенденции и анализ долга от наших отраслевых экспертов</font></font></p>
+                                <li><a href="https://medium.com/@stepchange" target="_blank" title="Ознакомиться и прокомментировать последние тенденции личного долга Великобритании"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Читайте наш блог medium.com &gt;&gt;</font></font></a></li>
+                            </ul>
+
+                            <div class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Втягиваться</font></font></p>
+                                <div class="socialLinks">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="menuItem">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn3" class="menuHeader"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">клиенты</font></font></a><img alt="выпадающий значок меню" id="chevron3" src="/static/img/line-chevron-down.png" class="chevron"></span>
+
+                    <div id="toggleSctn3" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/clients.aspx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клиенты дома&gt;</font></font></a>
+                        </div>
+
+                        <ul class="childMenuSection childMenuTopShadow moveLeftDesktop"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержка клиентов</font></font></p>
+                            <li><a id="topNav-Dmpclients" href="/clients/dmp-clients.aspx" title="Поддержка и информация для наших клиентов DMP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клиенты DMP</font></font></a></li>
+                            <li><a id="topNav-Bankruptcyclients" href="/clients/bankruptcy-clients.aspx" title="Руководство для клиентов рекомендуется банкротство"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Банкротство клиентов</font></font></a></li>
+                            <li><a id="topNav-Ivaclients" href="/clients/iva-clients.aspx" title="Информация, которая поможет сделать ваш IVA успешным"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клиенты IVA</font></font></a></li>
+                            <li><a id="topNav-Droclients" href="/clients/dro-clients.aspx" title="Ресурсы для клиентов, проходящих через УЦИ"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клиенты DRO</font></font></a></li>
+                            <li><a id="topNav-Tppclients" href="/clients/tpp-clients.aspx" title="Поддержка клиентов, осуществляющих выплаты токенов по своим долгам"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клиенты ТПП</font></font></a></li>
+                            <li><a id="topNav-Dasclients" href="/clients/das-clients.aspx" title="Помощь для клиентов на DPP через схему урегулирования задолженности"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клиенты DPP</font></font></a></li>
+                        </ul>
+
+                        <div class="childMenuSection childMenuBottomNoLine moveRightDesktop"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OnlineDMP логин</font></font></p>
+                            <div class="menuToolTeaser"><img alt="значок входа в систему DMP онлайн" class="teaserToolIcon" src="/static/img/line-lock-orange.png">
+                                <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Войдите в OnlineDMP</font></font></p></div>
+                            <a href="https://onlinedmp.stepchange.org/Home/Login" class="btn btnTertiary removeMarginBottom addMarginTop"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">войти в систему</font></font></a>
+                        </div>
+
+                    </div>
+
+                </li>
+
+                <li class="menuItem noBorder">
+                    <span role="menuitem" aria-haspopup="true" id="toggleBtn6" class="menuHeader"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Связаться с нами</font></font></a><img alt="выпадающий значок меню" id="chevron6" src="/static/img/line-chevron-down.png" class="chevron"></span>
+
+                    <div id="toggleSctn6" class="collapseContent" aria-hidden="true" style="display: none;">
+
+                        <div class="sectionHomeLink childMenuSection childMenuTopShadow">
+                            <a href="/contact-us.aspx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Свяжитесь с нами домой&gt;</font></font></a>
+                        </div>
+
+                        <div class="moveLeftDesktop">
+                            <ul class="childMenuSection childMenuBottomNoLine"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Другие способы связаться</font></font></p>
+                                <li><a id="topNav-Contactclientsupport" href="/contact-us.aspx#support" title="Ответы на ваши вопросы по урегулированию задолженности"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Служба поддержки клиентов</font></font></a></li>
+                                <li><a href="/contact-us.aspx#helpline" title="Получить справку о задолженности по телефону"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Позвоните на нашу горячую линию</font></font></a></li>
+                                <li><a id="topNav-Onlinedmp" href="https://onlinedmp.stepchange.org/Home/Login" target="_blank" onclick="dataLayer.push({'event':'GAevent', 'eventCategory':'Link', 'eventAction':'Click', 'eventLabel':'Top nav - Contact - OnlineDMP'});" title="Обновляйте свой DMP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использовать OnlineDMP</font></font></a></li>
+                                <li><a id="topNav-Emailus" href="/contact-us/send-us-an-email.aspx" title="Email us with your questions or comments"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отправить нам письмо</font></font></a></li>
+                                <li><a id="topNav-Complaints" href="/Legal/complaints-process.aspx" title="Our complaints process"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Недовольны нашим сервисом?</font></font></a></li>
+                                <li><a href="/media-centre.aspx" title="Contact our media team"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Пресс-запросы</font></font></a></li>
+
+
+                            </ul>
+
+
+                        </div>
+
+                        <div class="moveRightDesktop">
+                            <div class="childMenuSection childMenuTopShadow"><p class="childMenuSectionTitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Получите онлайн-совет по долгам сейчас</font></font></p>
+                                <div class="menuToolTeaser"><img alt="start debt advice icon" class="teaserToolIcon" src="/static/img/line-get-advice.png">
+                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Получите бесплатную консультацию по вопросам задолженности в течение менее чем 30 минут от ведущей благотворительной организации Великобритании</font></font></p></div>
+                                <a href="/Start.aspx" class="btn btnPrimary removeMarginBottom addMarginTop"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Начать долг совет</font></font></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+<!-- 
         <div class="menuSectionParentItem removePaddingTop">
             <ul role="menubar" aria-hidden="false">
                 <li class="menuItem">
@@ -319,7 +528,7 @@
 
                 </li>
             </ul>
-        </div>
+        </div> -->
     </nav>
 </header>
 <script src="{% static 'js/topNav.js' %}"></script>

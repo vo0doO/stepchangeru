@@ -1,11 +1,14 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
-
+from django.db import models
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.images.models import Image
 import blog
 
 
 class TitleAndTextBlock(blocks.StructBlock):
-
+    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
+    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
     title = blocks.CharBlock(required=True, help_text='Add your Title')
     text = blocks.TextBlock(required=True, help_text='Add additional text')
 
@@ -17,6 +20,8 @@ class TitleAndTextBlock(blocks.StructBlock):
 
 class CardBlock(blocks.StructBlock):
 
+    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
+    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
     title = blocks.CharBlock(required=True, help_text="Add your title")
 
     cards = blocks.ListBlock(
@@ -38,6 +43,8 @@ class CardBlock(blocks.StructBlock):
 
 
 class RichtextBlock(blocks.RichTextBlock):
+    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
+    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
     class Meta:
         template = "streams/richtext_block.html"
         icon = "doc-full"
@@ -52,7 +59,9 @@ class SimpleRichtextBlock(blocks.RichTextBlock):
             "italic",
             "link"
         ]
-    
+
+    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
+    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
     class Meta:
         template = "streams/richtext_block.html"
         icon = "edit"
@@ -61,7 +70,8 @@ class SimpleRichtextBlock(blocks.RichTextBlock):
 
 class CTABlock(blocks.StructBlock):
     """Call to action block"""
-
+    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
+    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
     title = blocks.CharBlock(required=True, max_length=50)
     text = blocks.RichTextBlock(required=True)
     button_page = blocks.PageChooserBlock(required=False)
@@ -74,7 +84,7 @@ class CTABlock(blocks.StructBlock):
         label = "Call to action"
 
 
-class LinkStructValue(blocks.StructValue):
+class ButtonLinkStructValue(blocks.StructValue):
     """Adding logic for our url"""
     def url(self):
         button_page = self.get('button_page')
@@ -90,6 +100,8 @@ class LinkStructValue(blocks.StructValue):
 
 
 class ButtonBlock(blocks.StructBlock):
+    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
+    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
     button_page = blocks.PageChooserBlock(required=False, help_text='First link')
     button_url = blocks.URLBlock(required=False, help_text='Last link')
 
@@ -102,4 +114,39 @@ class ButtonBlock(blocks.StructBlock):
         template = "streams/button_block.html"
         icon = "placeholder"
         label = "Single button"
-        value_class = LinkStructValue
+        value_class = ButtonLinkStructValue
+
+
+class BannerBlock(blocks.StructBlock):
+    banner = blocks.StructBlock(
+        banner_title = models.CharField(max_length=100,blank=False,null=True),
+        banner_subtitle = RichTextField(features=["bold", "italic"],default=""),
+        banner_image = models.ForeignKey(Image,on_delete=models.SET_NULL,null=True,blank=False,related_name="+"),
+        banner_cta = models.ForeignKey("wagtailcore.Page",models.SET_NULL,null=True,blank=False,related_name="+"),
+        content = StreamField([("cta", CTABlock(reversed=False)),], null=True, blank=True,),
+    )
+
+class RowBlock(blocks.StructBlock):
+    """Row form home page"""
+    row = blocks.ListBlock(
+        blocks.StructBlock(
+            html_attr_id=blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
+            html_attr_class=blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
+            rawHtml=blocks.RawHTMLBlock(required=False),
+            paragraph=blocks.RichTextBlock(required=False),
+            button=ButtonBlock(required=False),
+            card=CardBlock(required=False),
+            cta=CTABlock(required=False),
+            title_and_text_block=TitleAndTextBlock(required=False),
+            banner = BannerBlock(required=False)
+        )
+    )
+
+    class Meta:
+        template = "streams/button_block.html"
+        icon = "placeholder"
+        label = "Single button"
+        value_class = ButtonLinkStructValue
+
+if __name__ == "__main__":
+    import __name__
