@@ -40,9 +40,11 @@ class HomePage(RoutablePageMixin, Page):
 
     banner_image = models.ForeignKey(Image,on_delete=models.SET_NULL,null=True,blank=False,related_name="+")
 
-    banner_button_page = models.ForeignKey("wagtailcore.Page",models.SET_NULL,null=True,blank=False,related_name="+")
 
-    banner_button_url = models.URLField(default="/login/", null=True, blank=False,related_name="+")
+
+    button_page = models.ForeignKey("wagtailcore.Page",models.SET_NULL,null=True,blank=False,related_name="+")
+
+    banner_button_url = models.URLField(default="/login/", null=True, blank=False)
 
     content = StreamField(
         [
@@ -65,13 +67,6 @@ class HomePage(RoutablePageMixin, Page):
         ], heading="Carousel images"),
         StreamFieldPanel("content"),
     ]
-
-    @route(r'^$')
-    def the_subscribe_page(self, request, *args, **kwargs):
-        context = self.get_context(self, request, *args, **kwargs)
-        context["test_context"] = "Its test context"
-        return render(request, "home/subscribe.html", context)
-
 
     class Meta:
         verbose_name = "Home Page"
