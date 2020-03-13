@@ -40,8 +40,6 @@ class HomePage(RoutablePageMixin, Page):
 
     banner_image = models.ForeignKey(Image,on_delete=models.SET_NULL,null=True,blank=False,related_name="+")
 
-
-
     button_page = models.ForeignKey("wagtailcore.Page",models.SET_NULL,null=True,blank=False,related_name="+")
 
     banner_button_url = models.URLField(default="/login/", null=True, blank=False)
