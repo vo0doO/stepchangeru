@@ -2,7 +2,11 @@
     <div class="row">
         <div class="col-md-5 offset-md-1 col-sm-12 text-center">
             <h1>
-                <a class="btn btn-primary" href="{{ self.url }}">{{ self.url }}</a>
+                {% if self.button_page %}
+                    <a class="btn btn-primary" href="{{ self.button_page.url }}">{{ self.button_text }}</a>
+                {% elif self.button_url %}
+                    <a class="btn btn-primary" href="{{ self.button_url }}">{{ self.button_text }}</a>
+                {% endif %}
             </h1>
         </div>
     </div>

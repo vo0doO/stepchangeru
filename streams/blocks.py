@@ -58,7 +58,7 @@ class CardBlock(blocks.StructBlock):
 
 
 class RichtextBlock(blocks.RichTextBlock):
-    def __init__(self, required=True, help_text=None, editor='draftail', validators=(), **kwargs):
+    def __init__(self, required=True, help_text=None, editor='default', validators=(), **kwargs):
         super().__init__(**kwargs)
         self.features = [
             "h1",
@@ -151,6 +151,7 @@ class ButtonLinkStructValue(blocks.StructValue):
 class ButtonBlock(blocks.StructBlock):
     html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
     html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
+    button_text = blocks.CharBlock(required=True, max_length=100, help_text="Button Text")
     button_page = blocks.PageChooserBlock(required=False, help_text='First link')
     button_url = blocks.CharBlock(required=False, help_text='Last link')
 
@@ -160,7 +161,7 @@ class ButtonBlock(blocks.StructBlock):
     #     return context
 
     class Meta:
-        template = "streams/button_block.html"
+        template = 'streams/button_block.html'
         icon = "placeholder"
         label = "Single button"
         value_class = ButtonLinkStructValue

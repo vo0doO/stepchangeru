@@ -16,10 +16,10 @@ def register_mark_feature(features):
     # 2. Сконфигурируйте, как Draftail обрабатывает объект на его панели инструментов.
     control = {
         'type': type_,
-        'label': '☆',
+        'label': 'mark',
         'description': 'Mark',
         # Это даже не требуется - Draftail имеет предопределенные стили для MARK.
-        # 'style': {'textDecoration': 'line-through'},
+        'style': {'textDecoration': 'line-through'},
     }
 
     # 3.Вызовите register_editor_plugin, чтобы зарегистрировать конфигурацию для Draftail.
