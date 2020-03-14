@@ -190,6 +190,24 @@ class AlertBlock(blocks.StructBlock):
         icon = "warning"
         label = "Alert Block"
 
+
+class ContainerBlock(blocks.StructBlock):
+    """Alert block from added to rows in home page."""
+
+    content = blocks.StreamBlock([
+        ["text", RichtextBlock()],
+        ("alert", AlertBlock),
+        ("card", CardBlock),
+        ("cta", CTABlock),
+    ], help_text="Контейнер строки страницы с произвольным заполнением")
+
+
+    class Meta:
+        template = "streams/container_block.html"
+        icon = "folder"
+        label = "Container Block"
+
+
 class RowBlock(blocks.StructBlock):
     """Row form home page"""
 
