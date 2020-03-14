@@ -5229,8 +5229,8 @@ html {
 
 @font-face {
     font-family: "stepchange";
-    src: url("/Portals/_default/skins/stepchange-framework/assets/fonts/stepchange.eot");
-    src: url("/Portals/_default/skins/stepchange-framework/assets/fonts/stepchange.eot?#iefix") format("embedded-opentype"),url("/Portals/_default/skins/stepchange-framework/assets/fonts/stepchange.woff") format("woff"),url("/Portals/_default/skins/stepchange-framework/assets/fonts/stepchange.ttf") format("truetype"),url("/Portals/_default/skins/stepchange-framework/assets/fonts/stepchange.svg#stepchange") format("svg");
+    src: url("/static/fonts/stepchange.eot");
+    src: url("/static/fonts/stepchange.eot?#iefix") format("embedded-opentype"),url("/static/fonts/stepchange.woff") format("woff"),url("/static/fonts/stepchange.ttf") format("truetype"),url("/static/fonts/stepchange.svg#stepchange") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -5479,7 +5479,7 @@ body {
 
 @font-face {
     font-family: 'Corbel';
-    src: url("/Portals/_default/skins/stepchange-framework/assets/fonts/Corbel.eot"),url("/Portals/_default/skins/stepchange-framework/assets/fonts/Corbel.eot?#iefix") format("embedded-opentype"),url("/Portals/_default/skins/stepchange-framework/assets/fonts/Corbel.ttf") format("truetype"),url("/Portals/_default/skins/stepchange-framework/assets/fonts/Corbel.svg#Corbel") format("svg");
+    src: url("/static/fonts/Corbel.eot"),url("/static/fonts/Corbel.eot?#iefix") format("embedded-opentype"),url("/static/fonts/Corbel.ttf") format("truetype"),url("/static/fonts/Corbel.svg#Corbel") format("svg");
     font-weight: normal;
     font-style: normal;
 }

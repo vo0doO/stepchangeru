@@ -1,24 +1,22 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-
 <div id="dnn_ContentPane" class="grid-noGutter--equalHeight_sm-1 skin-header-width"><div class="DnnModule DnnModule-DNN_HTML DnnModule-24257 DnnVersionableControl"><a name="24257"></a>
 
     <div class="container-margin-bottom">
         <div id="dnn_ctr24257_ContentPane" class="module-content">
             <!-- Start_Module_24257 -->
-
-            {% image self.banner_image width-3560 as img %}
+            {% image self.image width-3560 as img %}
 
             <div id="dnn_ctr24257_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
             <div id="dnn_ctr24257_HtmlModule_lblContent"><div class="containerFull">
                 <img class="bannerIMG" src="{{ img.url }}" alt="{{ img.title }}">
                 <div class="containerWide">
                     <div class="headerBox">
-                        <h1 class="u-margin--bottom--xs">{{ self.banner_title }}</h1>
+                        <h1 class="u-margin--bottom--xs">{{ self.title }}</h1>
                         <p class="g-lead-text text-white">
-                            {{ self.banner_subtitle}}
+                            {{ self.subtitle}}
                         </p>
-                        <a class="g-btn" href="/login">Получить помощь по долгам сейчас</a>
+                        <a class="g-btn" href="{{ self.button_url }}">{{ self.button_text }}</a>
                     </div>
                 </div>
             </div></div>

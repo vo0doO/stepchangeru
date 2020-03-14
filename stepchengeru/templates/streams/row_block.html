@@ -1,0 +1,9 @@
+{% load wagtailcore_tags %}
+
+<div id="dnn_row{{ forloop.counter0 }}" class="grid-noGutter--equalHeight_sm-1 skin-{{ self.width }}-width">
+    {% for block in self.content  %}
+        <div class="DnnModule DnnModule-DNN_HTML DnnModule-24895 DnnVersionableControl">
+            {% include_block block %}
+        </div>
+    {% endfor %}
+</div>

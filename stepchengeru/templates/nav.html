@@ -28,7 +28,7 @@
                 <p class="navIconText">Поиск</p>
             </div>
             <div class="navIconMenuButton" id="lineSearchBtn">
-                <img alt="button to close search bar" role="button" src="{% static "img/line_cross.png" %}" class="navIcon">
+                <img alt="button to close search bar" role="button" src="{% static "img/line-cross.png" %}" class="navIcon">
                 <p class="navIconText">Close</p>
             </div>
             <div class="navIconMenuButton" id="lineAccntBtn">
@@ -40,18 +40,18 @@
                 <p class="navIconText">Меню</p>
             </div>
             <div class="navIconMenuButton" id="cross">
-                <img alt="button to close menu" role="button" src="{% static "img/line-cross.png" %}" class="navIcon">
+                <img alt="button to close menu"{% static "img/line-cross.png" %}" class="navIcon">
                 <p class="navIconText">Close</p>
             </div>
         </div>
 
         <!--
         <div class="navIconContainer">
-            <img alt="button to open search bar" role="button" src="/Portals/0/TopNav/Img/line-search.png" class="navIcon" id="searchBtn">
-            <img alt="button to close search bar" role="button" src="/Portals/0/TopNav/Img/line-cross.png" class="navIcon" id="lineSearchBtn">
-            <a href="{{ login.url }}"><img alt="link to log back in to your account" src="/Portals/0/TopNav/Img/line-account-charcoal.png" class="navIcon" id="lineAccntBtn"></a>
-            <img alt="button to open menu" role="button" src="/Portals/0/TopNav/Img/line-menu.png" class="navIcon" id="hamburger">
-            <img alt="button to close menu" role="button" src="/Portals/0/TopNav/Img/line-cross.png" class="navIcon" id="cross">
+            <img alt="button to open search bar" role="button" src="{% static "img/line-search.png" %}" class="navIcon" id="searchBtn">
+            <img alt="button to close search bar" role="button" src="{% static "img/line-cross.png" %}" class="navIcon" id="lineSearchBtn">
+            <a href="{{ login.url }}"><img alt="link to log back in to your account" src="{% static "img/line-account-charcoal.png" %}" class="navIcon" id="lineAccntBtn"></a>
+            <img alt="button to open menu" role="button" src="{% static "img/line-menu.png" %}" class="navIcon" id="hamburger">
+            <img alt="button to close menu" role="button" src="{% static "img/line-cross.png" %}" class="navIcon" id="cross">
         </div>
         -->
     </div>
@@ -97,7 +97,7 @@
                 if (query == "") {
                     alert("Please enter a search term");
                 } else {
-                    window.location.href = 'https://www.stepchange.org/search-results?search=' + query;
+                    window.location.href = 'https://www.stepchange.org/search?search=' + query;
                 }
             }
             </script>

@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+<div class="module blank u-margin--bottom--sm">
+    <div class="g-alert--{{ self.css_class }} u-margin--last--none u-margin--bottom--md">
+        <p>
+            <strong>{{ self.title }}</strong>
+        </p>
+        <p>
+            {{ self.text|richtext }}
+        </p>
+    </div>
+</div>
