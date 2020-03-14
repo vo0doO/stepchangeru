@@ -23,8 +23,7 @@ class CarouselImages(blocks.StructBlock):
 
 
 class TitleAndTextBlock(blocks.StructBlock):
-    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
-    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
+
     title = blocks.CharBlock(required=True, help_text='Add your Title')
     text = blocks.TextBlock(required=True, help_text='Add additional text')
 
@@ -35,9 +34,7 @@ class TitleAndTextBlock(blocks.StructBlock):
 
 
 class CardBlock(blocks.StructBlock):
-
-    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
-    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
+    """Cards blocks from 1 or 5 card"""
 
     cards = blocks.ListBlock(
         blocks.StructBlock(
@@ -83,8 +80,6 @@ class RichtextBlock(blocks.RichTextBlock):
             "strikethrough"
             "blockquote"
         ]
-    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
-    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
 
     class Meta:
         template = "streams/richtext_block.html"
@@ -108,8 +103,6 @@ class SimpleRichtextBlock(blocks.RichTextBlock):
             "link",
         ]
 
-    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
-    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
     class Meta:
         template = "streams/richtext_block.html"
         icon = "edit"
@@ -118,8 +111,7 @@ class SimpleRichtextBlock(blocks.RichTextBlock):
 
 class CTABlock(blocks.StructBlock):
     """Call to action block"""
-    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
-    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
+
     image = ImageChooserBlock(required=False, help_text="Image from call to action. If need.")
     title = blocks.CharBlock(required=True, max_length=50)
     text = blocks.RichTextBlock(required=True)
@@ -144,21 +136,12 @@ class ButtonLinkStructValue(blocks.StructValue):
             return button_url
         return None
 
-    # def latest_posts(self):
-    #     return blog.models.BlogDetailPage.objects.live()[:3]
-
 
 class ButtonBlock(blocks.StructBlock):
-    html_attr_id = blocks.CharBlock(max_length=10, required=False, help_text="id in html tag attr"),
-    html_attr_class = blocks.CharBlock(max_length=10, required=False, help_text="Css class. Set style"),
+
     button_text = blocks.CharBlock(required=True, max_length=100, help_text="Button Text")
     button_page = blocks.PageChooserBlock(required=False, help_text='First link')
     button_url = blocks.CharBlock(required=False, help_text='Last link')
-
-    # def get_context(self, request, *args, **kwargs):
-    #     context = super().get_context(request, *args, **kwargs)
-    #     context['latest_posts'] = blog.models.BlogDetailPage.objects.live().public()[:3]
-    #     return context
 
     class Meta:
         template = 'streams/button_block.html'
@@ -191,6 +174,8 @@ class BannerBlock(blocks.StructBlock):
 
 
 class AlertBlock(blocks.StructBlock):
+    """Alert block from added to rows in home page"""
+
     css_class = blocks.ChoiceBlock(
         choices=([
             ("info", "Info"),
