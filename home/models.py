@@ -20,7 +20,6 @@ class HomePage(RoutablePageMixin, Page):
     content = StreamField(
         [
             ("banner", blocks.BannerBlock()),
-            ("cta", blocks.CTABlock()),
             ("row", blocks.RowBlock()),
         ],
         null=True, blank=True,)
