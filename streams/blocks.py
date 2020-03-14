@@ -5,7 +5,7 @@ from wagtail.images.models import Image
 
 
 class CarouselImages(blocks.StructBlock):
-    """Betwen 1 and 5 imagefor home page carousel"""
+    """Betwen 1 and 5 imagefor home page carousel."""
 
 
     images = blocks.ListBlock(
