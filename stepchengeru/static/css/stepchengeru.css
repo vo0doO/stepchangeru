@@ -9493,6 +9493,9 @@ main.u-clear-floating-header {
     width: 2rem;
 }
 
+
+/* TODO: изменить ссылку на иконки */
+
 .social-twitter,.social-facebook,.social-youtube,.social-google,.social-linkedin,.social-instagram {
     margin-left: 10px;
 }
@@ -9566,7 +9569,7 @@ main.u-clear-floating-header {
     bottom: 0;
     cursor: pointer;
     padding: 8px 12px 5px 3px;
-    background-image: url("/portals/_default/skins/stepChange-2/img/social-share-icon.png");
+    background-image: url("/portals/_default/skins/stepchange-2/img/social-share-icon.png");
     background-repeat: no-repeat;
     background-position: 0 10px;
     padding-left: 21px;

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="0780192b-7e0b-4d5a-bb6f-e1ff4f247e44" data-blockingmode="auto" type="text/javascript"></script>
     <meta charset="utf-8" />
     <title>
         {% block title %}
@@ -32,7 +33,17 @@
     {% endblock %}">
 
 
-    {% include "nav.html" %}
+    {% include "patterns/organism/header.html" %}
+    {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
 
 <div id="page">
     <main>
@@ -40,9 +51,12 @@
             {% block content %}{% endblock %}
         </div>
     </main>
+    {% include "patterns/organism/fotter.html" %}
+    {% include "patterns/organism/cybot_cookiebot_dialog.html" %}
 </div>
 
     {% wagtailuserbar %}
+
 {# Global javascript #}
 <script type="text/javascript" src="{% static 'js/stepchengeru.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

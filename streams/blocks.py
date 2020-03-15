@@ -1,6 +1,6 @@
+from django.db import models
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from django.db import models
 from wagtail.images.models import Image
 
 
@@ -17,7 +17,7 @@ class CarouselImages(blocks.StructBlock):
     )
 
     class Meta:
-        template = "streams/carousel-image.html"
+        template = "patterns/molecules/streams/carousel-image.html"
         icon = "placeholder"
         label = "Image carousel Block"
 
@@ -28,7 +28,7 @@ class TitleAndTextBlock(blocks.StructBlock):
     text = blocks.TextBlock(required=True, help_text='Add additional text')
 
     class Meta:
-        template = "streams/title_and_text_block.html"
+        template = "patterns/atoms/streams/title_and_text_block.html"
         icon = "edit"
         lable = "Title & Text"
 
@@ -49,7 +49,7 @@ class CardBlock(blocks.StructBlock):
     )
      
     class Meta:
-        template = "streams/card_block.html"
+        template = "patterns/molecules/streams/card_block.html"
         icon = "doc-full-inverse"
         label = "Card Block"
 
@@ -82,7 +82,7 @@ class RichtextBlock(blocks.RichTextBlock):
         ]
 
     class Meta:
-        template = "streams/richtext_block.html"
+        template = "patterns/atoms/streams/richtext_block.html"
         icon = "edit"
         label = "Full RichText"
 
@@ -104,7 +104,7 @@ class SimpleRichtextBlock(blocks.RichTextBlock):
         ]
 
     class Meta:
-        template = "streams/richtext_block.html"
+        template = "patterns/atoms/streams/richtext_block.html"
         icon = "edit"
         label = "Small RichText"
 
@@ -120,7 +120,7 @@ class CTABlock(blocks.StructBlock):
     button_text = blocks.CharBlock(required=True, default="Узнать больше", max_length=40)
 
     class Meta:
-        template = "streams/cta_block.html"
+        template = "patterns/molecules/streams/cta_block.html"
         icon = "chain-broken"
         label = "Call to action"
 
@@ -144,7 +144,7 @@ class ButtonBlock(blocks.StructBlock):
     button_url = blocks.CharBlock(required=False, help_text='Last link')
 
     class Meta:
-        template = 'streams/button_block.html'
+        template = 'patterns/atoms/streams/button_block.html'
         icon = "placeholder"
         label = "Single button"
         value_class = ButtonLinkStructValue
@@ -168,7 +168,7 @@ class BannerBlock(blocks.StructBlock):
 
 
     class Meta:
-        template = "streams/banner_block.html"
+        template = "patterns/organism/streams/banner_block.html"
         icon = "image"
         label = "Banner"
 
@@ -186,26 +186,62 @@ class AlertBlock(blocks.StructBlock):
     text = RichtextBlock()
 
     class Meta:
-        template = "streams/alert_block.html"
+        template = "patterns/molecules/streams/alert_block.html"
         icon = "warning"
         label = "Alert Block"
+
+
+class WidgetContainerBlock(blocks.StructBlock):
+    """Widget container from content container in row"""
+    classname = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("color", blocks.ChoiceBlock(
+                     choices=(
+                         [
+                             ("widgetBG-Orange", "Orange"),
+                             ("widgetBG-Purple", "Purple"),
+                             ("widgetBG-mistGrey", "mistGrey"),
+                             ("widgetBG-charcoalGrey", "charcoalGrey"),
+                             ("widgetBG-trustBlue", "trustBlue")
+                         ]
+                     )
+                 )),
+                ("positions", blocks.ChoiceBlock(
+                    choices=(
+                         [
+                             ("widgetLeft", "Left"),
+                             ("widgetRight", "Right"),
+                             ("widgetContainerClear", "Clear")
+                         ]
+                     )
+                 ))
+            ]
+        )
+    )
+
+    class Meta:
+        template = "patterns/molecules/streams/container_block.html"
+        icon = "folder"
+        label = "Container"
 
 
 class ContainerBlock(blocks.StructBlock):
     """Alert block from added to rows in home page."""
 
-    content = blocks.StreamBlock([
-        ["text", RichtextBlock()],
-        ("alert", AlertBlock),
-        ("card", CardBlock),
-        ("cta", CTABlock),
-    ], help_text="Контейнер строки страницы с произвольным заполнением")
+    body = blocks.StreamBlock([
+        ("widget", WidgetContainerBlock(required=False)),
+        ("text", RichtextBlock(required=False)),
+        ("alert", AlertBlock(required=False)),
+        ("card", CardBlock(required=False)),
+        ("cta", CTABlock(required=False)),
+    ])
 
 
     class Meta:
-        template = "streams/container_block.html"
+        template = "patterns/molecules/streams/container_block.html"
         icon = "folder"
-        label = "Container Block"
+        label = "Container"
 
 
 class RowBlock(blocks.StructBlock):
@@ -219,6 +255,7 @@ class RowBlock(blocks.StructBlock):
     )
 
     content = blocks.StreamBlock([
+        ("container", ContainerBlock()),
         ("p", RichtextBlock()),
         ("alert", AlertBlock()),
         ("card", CardBlock()),
@@ -226,9 +263,9 @@ class RowBlock(blocks.StructBlock):
     ])
 
     class Meta:
-        template = "streams/row_block.html"
+        template = "patterns/organism/streams/row_block.html"
         icon = "grip"
         label = "Page row"
 
 if __name__ == "__main__":
-    import __name__
+    pass

@@ -1,21 +1,13 @@
 {% load static %}
+{% load account socialaccount %}
+
 
 <header id="headerTopNav" class="headerContainer ">
-
-
-
     <!-- Meta -->
-
-
     <link href="{% static 'css/topNav.css' %}" type="text/css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-
-
-
     <!-- Top Header -->
-
-
     <div class="menuBarContainer" id="menuBarContainer">
 
         <div>
@@ -29,19 +21,41 @@
             </div>
             <div class="navIconMenuButton" id="lineSearchBtn">
                 <img alt="button to close search bar" role="button" src="{% static "img/line-cross.png" %}" class="navIcon">
-                <p class="navIconText">Close</p>
+                <p class="navIconText">Закрыть</p>
             </div>
-            <div class="navIconMenuButton" id="lineAccntBtn">
-                <a href="/return"><img alt="link to log back in to your account" src="{% static "img/line-account-charcoal.png" %}" class="navIcon"></a>
-                <p class="navIconText">Вход</p>
-            </div>
+            {% if user.is_authenticated %}
+                <div class="navIconMenuButton" id="lineAccntBtn">
+                    <a href="{% url 'account_logout' %}">
+                        <img alt="link to log back in to your account"
+                             src="{% static "img/line-account-charcoal.png" %}"
+                             class="navIcon"
+                        >
+                    </a>
+                    <p class="navIconText">
+                        Выход
+                    </p>
+                </div>
+            {% else %}
+                <div class="navIconMenuButton" id="lineAccntBtn">
+                    <a href="{% url 'account_login' %}">
+                        <img alt="link to log back in to your account"
+                             src="{% static "img/line-account-charcoal.png" %}"
+                             class="navIcon"
+                        >
+                    </a>
+                    <p class="navIconText">
+                        Вход
+                    </p>
+                </div>
+            {% endif %}
+
             <div class="navIconMenuButton" id="hamburger">
                 <img alt="button to open menu" role="button" src="{% static "img/line-menu.png" %}" class="navIcon">
                 <p class="navIconText">Меню</p>
             </div>
             <div class="navIconMenuButton" id="cross">
-                <img alt="button to close menu"{% static "img/line-cross.png" %}" class="navIcon">
-                <p class="navIconText">Close</p>
+                <img alt="button to close menu" src="{% static "img/line-cross.png" %}" class="navIcon">
+                <p class="navIconText">Закрыть</p>
             </div>
         </div>
 
@@ -55,17 +69,10 @@
         </div>
         -->
     </div>
-
-
-
     <!-- Top Search -->
-
-
     <div role="search" id="mainSearchContainer" class="mainSearchContainer">
         <button class="searchSubmitDesktop" type="button" onclick="searchRunDesktop(this.form); return false;"><img alt="spy glass icon" src="{% static "img/line-search.png" %}" class="navIcon"></button>
     </div>
-
-
     <script> function searchRun(formName) {
         var query = document.getElementById('searchInputMobile').value;
         if (query == "") {
@@ -75,12 +82,7 @@
         }
     }
     </script>
-
-
-
     <!-- Top Navigation -->
-
-
     <nav role="navigation" id="parentMenu" class="parentMenu">
 
 
@@ -93,29 +95,60 @@
             </div>
 
             <script> function searchRunDesktop(formName) {
-                var query = document.getElementById('searchInputDesktop').value;
+                var query = document.getElementById('searchInp  utDesktop').value;
                 if (query == "") {
                     alert("Please enter a search term");
                 } else {
-                    window.location.href = 'https://www.stepchange.org/search?search=' + query;
+                    window.location.href = window.location+'search?search=' + query;
                 }
             }
             </script>
 
-            <a role="button" id="startButton" href="{{ login.url }}" class="btn btnPrimary">Get debt help now</a>
-            <a role="button" id="loginButton" href="{{ login.url }}"><img title="Return to debt advice" alt="return to debt advice icon" class="loginIcons" src="{%  static "img/line-account-purple.png" %}">Вход</a>
-            <a role="button" href="{{ login.url }}"><img title="OnlineDMP" alt="online D M P icon" class="loginIcons" src="{% static "img/line-featured-link.png" %}">ОнлайнDMP</a>
+            <a role="button"
+               id="startButton"
+               href="{% url "account_signup" %}"
+               class="btn btnPrimary">Получить помощь по долгам сейчас</a>
+            <a role="button"
+               id="loginButton"
+               href="{% url "account_login" %}">
+                <img title="Return to debt advice"
+                     alt="return to debt advice icon"
+                     class="loginIcons"
+                     src="{%  static "img/line-account-purple.png" %}">
+                Вход
+            </a>
 
-
+            <a role="button"
+               href="{% url "account_signup" %}">
+                <img title="OnlineDMP"
+                     alt="online D M P icon"
+                     class="loginIcons"
+                     src="{% static "img/line-featured-link.png" %}"
+                >ОнлайнDMP
+            </a>
         </div>
 
         <!-- Menus -->
         <div class="menuSectionParentItem removePaddingTop">
             <ul role="menubar" aria-hidden="false">
                 <li class="menuItem">
-                    <span role="menuitem" aria-haspopup="true" id="toggleBtn1" class="menuHeader"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Как мы помогаем</font></font></a><img alt="выпадающий значок меню" id="chevron1" src="/static/img/line-chevron-down.png" class="chevron"></span>
-
-                    <div id="toggleSctn1" class="collapseContent" aria-hidden="true" style="display: none;">
+                    <span role="menuitem"
+                          aria-haspopup="true"
+                          id="toggleBtn1"
+                          class="menuHeader">
+                        <a href="#">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                        Как мы помогаем</font>
+                    </font>
+                    </a>
+                        <img
+                            alt="выпадающий значок меню" id="chevron1" src="/static/img/line-chevron-down.png"
+                                                                                                                                                                                                                                  class="chevron"></span>
+                    <div id="toggleSctn1"
+                         class="collapseContent"
+                         aria-hidden="true"
+                         style="display: none;">
 
                         <div class="sectionHomeLink childMenuSection childMenuTopShadow">
                             <a href="https://www.stepchange.org/how-we-help.aspx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Как мы помогаем домой&gt;</font></font></a>
@@ -155,7 +188,6 @@
 
                         </div>
                     </div>
-
                 </li>
 
                 <li class="menuItem">
@@ -189,7 +221,6 @@
                     </div>
 
                 </li>
-
 
                 <li class="menuItem">
                     <span role="menuitem" aria-haspopup="true" id="toggleBtn5" class="menuHeader"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">О нас</font></font></a><img alt="выпадающий значок меню" id="chevron5" src="/static/img/line-chevron-down.png" class="chevron"></span>
@@ -531,4 +562,5 @@
         </div> -->
     </nav>
 </header>
+
 <script src="{% static 'js/topNav.js' %}"></script>

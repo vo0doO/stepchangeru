@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+
+{% block content %}
+    <div class="container-margin-bottom">
+        <!-- Start_Module -->
+        <div class="DNNModuleContent ModDNNHTMLC">
+        {% for value in self.stream_data %}
+                {{ value }}
+        {% endfor %}
+</div>
+        <!-- End_Module_23210 -->
+    </div>
+{% endblock %}
