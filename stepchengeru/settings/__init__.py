@@ -3,6 +3,7 @@ from split_settings.tools import optional, include
 include(
     # Параметры среды нагрузки
     'base/base.py',
+    'base/database.py',
     'base/path.py',
     # optional('local/base.py'),  # Мы можем «path» любые настройки из локального файла папки env.py.
     #
@@ -17,3 +18,5 @@ include(
 
     optional('local/*.py'),  # мы можем загрузить любые другие настройки из локальной папки
 )
+
+from . import *
