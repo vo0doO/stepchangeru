@@ -1,3 +1,5 @@
+
+
 INSTALLED_APPS = [
     'home',
     'search',
@@ -40,3 +42,4 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google'
 ]
+
