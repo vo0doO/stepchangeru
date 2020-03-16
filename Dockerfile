@@ -1,10 +1,10 @@
 # Use an official Python runtime as a parent image
 FROM python:3.7
-LABEL maintainer="hello@wagtail.io"
+LABEL maintainer="voodoo@stchange.ru"
 
 # Set environment varibles
 ENV PYTHONUNBUFFERED 1
-ENV DJANGO_ENV dev
+ENV DJANGO_ENV production
 
 COPY ./requirements.txt /code/requirements.txt
 RUN pip install --upgrade pip
@@ -13,9 +13,9 @@ RUN pip install -r /code/requirements.txt
 RUN pip install gunicorn
 
 # Copy the current directory contents into the container at /code/
-COPY . /code/
+COPY . /
 # Set the working directory to /code/
-WORKDIR /code/
+WORKDIR /
 
 RUN python manage.py migrate
 
