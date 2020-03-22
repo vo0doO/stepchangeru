@@ -1,4 +1,5 @@
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'home',
     'search',
     'flex',

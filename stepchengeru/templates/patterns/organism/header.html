@@ -63,7 +63,9 @@
         <div class="navIconContainer">
             <img alt="button to open search bar" role="button" src="{% static "img/line-search.png" %}" class="navIcon" id="searchBtn">
             <img alt="button to close search bar" role="button" src="{% static "img/line-cross.png" %}" class="navIcon" id="lineSearchBtn">
-            <a href="{{ login.url }}"><img alt="link to log back in to your account" src="{% static "img/line-account-charcoal.png" %}" class="navIcon" id="lineAccntBtn"></a>
+            <a href="{% url "account_login" %}">
+                <img alt="link to log back in to your account" src="{% static "img/line-account-charcoal.png" %}" class="navIcon" id="lineAccntBtn">
+            </a>
             <img alt="button to open menu" role="button" src="{% static "img/line-menu.png" %}" class="navIcon" id="hamburger">
             <img alt="button to close menu" role="button" src="{% static "img/line-cross.png" %}" class="navIcon" id="cross">
         </div>
@@ -71,7 +73,9 @@
     </div>
     <!-- Top Search -->
     <div role="search" id="mainSearchContainer" class="mainSearchContainer">
-        <button class="searchSubmitDesktop" type="button" onclick="searchRunDesktop(this.form); return false;"><img alt="spy glass icon" src="{% static "img/line-search.png" %}" class="navIcon"></button>
+        <button class="searchSubmitDesktop" type="button" onclick="searchRunDesktop(this.form); return false;">
+            <img alt="spy glass icon" src="{% static "img/line-search.png" %}" class="navIcon">
+        </button>
     </div>
     <script> function searchRun(formName) {
         var query = document.getElementById('searchInputMobile').value;

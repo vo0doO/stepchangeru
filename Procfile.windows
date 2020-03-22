@@ -1,1 +1,2 @@
-web: python manage.py runserver 127.0.0.1:8000
+web: ..\.env\Scripts\python.exe manage.py runserver 127.0.0.1:8000
+web: gunicorn stepchangeru.wsgi --log-file -
