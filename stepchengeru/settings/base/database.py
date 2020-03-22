@@ -6,7 +6,7 @@ import dj_database_url
 
 
 DATABASES = {
-    'default': dj_database_url.parse(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.parse("postgres://jxqngigzyplber:8137bbda577d4cd0744aad49bebbde3915510437829fbf8ddcfd9840d1e684ec@ec2-54-217-204-34.eu-west-1.compute.amazonaws.com:5432/ddr09e6k0paset", conn_max_age=600, ssl_require=True)
 }
 # DATABASES = {
 #     'default': {
