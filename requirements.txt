@@ -1,6 +1,6 @@
 aniso8601==7.0.0
 asgi-redis==1.4.3
-asgiref==3.2.5
+asgiref~=1.1.2
 attrs==19.3.0
 autobahn==20.3.1
 Automat==20.2.0
@@ -54,7 +54,7 @@ Pygments==2.6.1
 PyHamcrest==2.0.2
 pymdown-extensions==7.0b2
 pyOpenSSL==19.1.0
-python-dateutil==1.5
+python-dateutil>=2.6.1
 python3-openid==3.1.0
 pytz==2019.3
 PyYAML==5.3
