@@ -7,7 +7,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'APP': {
             'client_id': '284147287963-h67tj65028htocnt7kgct2v3532pnmpv.apps.googleusercontent.com',
             'secret': 'Wc0qfegt5J_QYJjcFrgpvtQ7',
-            'key': ''
+            'key': 'AIzaSyAlV8Lw7Wj2dAH5MCLrSWQk8eAku0DW1AY'
         }
     },
         'facebook': {
