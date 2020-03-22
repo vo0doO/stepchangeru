@@ -1,1 +1,1 @@
-web: gunicorn stepchangeru.wsgi --log-file -
+web: gunicorn stepchengeru.wsgi --log-file -

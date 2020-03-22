@@ -21,6 +21,6 @@ SITE_ID = 1
 ROOT_URLCONF = 'stepchengeru.urls'
 
 WSGI_APPLICATION = 'stepchengeru.wsgi.application'
-
+ALLOWED_HOSTS = ['stepchange.herokuapp.com', 'voo.asuscomm.com', 'localhost', "213.158.1.82", "127.0.0.1", "0.0.0.0"]
 
 
