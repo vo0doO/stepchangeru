@@ -1,9 +1,9 @@
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
+        # Для каждого поставщика на основе OAuth либо добавьте `` SocialApp``
+        # (приложение `` socialaccount``), содержащее требуемый клиент
+        # учетные данные, или перечислите их здесь:
         'APP': {
             'client_id': '284147287963-h67tj65028htocnt7kgct2v3532pnmpv.apps.googleusercontent.com',
             'secret': 'Wc0qfegt5J_QYJjcFrgpvtQ7',

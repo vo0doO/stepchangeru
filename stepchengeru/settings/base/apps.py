@@ -7,6 +7,7 @@ INSTALLED_APPS = [
     'site_settings',
     'subscribers',
     'blog',
+    'patterns',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
@@ -41,4 +42,3 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 ]
-
