@@ -70,7 +70,7 @@ sqlparse==0.3.0
 txaio==20.1.1
 Unidecode==1.1.1
 urllib3==1.25.8
-wagtail==2.8
+wagtail==2.11.6
 wagtail-headless-preview==0.1.4
 webencodings==0.5.1
 websocket-client==0.57.0
