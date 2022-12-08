@@ -7,7 +7,7 @@ Automat==20.2.0
 beautifulsoup4==4.6.0
 block==0.0.5
 blog==1.0.1
-certifi==2019.11.28
+certifi==2022.12.7
 cffi==1.14.0
 chardet==3.0.4
 colorthief==0.2.1
